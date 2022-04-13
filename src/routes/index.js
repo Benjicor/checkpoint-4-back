@@ -1,8 +1,6 @@
 const mainRouter = require("express").Router();
+const newsRouter = require("./news.routes");
 
-// Exemple content of this file //
-
-// const exempleRouter = require("./exemple.routes");
-// mainRouter.use("/exemple", exempleRouter);
+mainRouter.use("/news", newsRouter);
 
 module.exports = mainRouter;

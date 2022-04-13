@@ -1,4 +1,5 @@
-// Exemple content of this file //
+const NewsController = require("./news.controllers");
 
-// const ExampleController = require("./example.controllers");
-// module.exports = { ExampleController };
+module.exports = {
+  NewsController,
+};
