@@ -17,7 +17,7 @@ app.listen(process.env.PORT || 8000, (err) => {
   // Test connexion to MYSQL DB
   connection.connect((err) => {
     if (err) return console.log(err.message);
-    console.log(`La connexion a la base de donnée a réussi`);
+    console.log(`La connexion a la base de donnée ${process.env.DB_NAME} de ${process.env.DB_USER} a réussi`);
   });
 });
 
