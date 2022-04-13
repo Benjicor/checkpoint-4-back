@@ -19,7 +19,7 @@ const createOne = async (req, res) => {
     const [result] = await News.createOne({ title, src, link, created_at, description });
     const [[newsCreated]] = await News.findOneById(result.insertId);
     return res.status(201).json({
-      message: "Votre actualité à bien été créer",
+      message: "Votre actualité a bien été créé",
       news: newsCreated,
     });
   } catch (err) {
@@ -30,10 +30,10 @@ const createOne = async (req, res) => {
 // Méthode qui permet de mettre a jour les informations d'une actualité par son ID
 const updateOneById = async (req, res) => {
   try {
-    const { title, created_at, description } = req.body;
-    await News.updateOneById({ title, created_at, description });
+    const { title, src, link, created_at, description } = req.body;
+    await News.updateOneById({ title, src, link, created_at, description });
     const [[news]] = await News.findOneById(req.params.id);
-    return res.status(200).json({ message: "L'actualité à bien été modifier", news });
+    return res.status(200).json({ message: "L'actualité a bien été modifié", news });
   } catch (err) {
     return res.status(500).send(err.message);
   }
@@ -46,7 +46,7 @@ const deleteOneById = async (req, res) => {
     if (!result.affectedRows) {
       return res.status(404).send();
     }
-    return res.status(204).json({ message: "L'actualité' à bien été supprimer" });
+    return res.status(204).json({ message: "L'actualité a bien été supprimé" });
   } catch (err) {
     return res.status(500).send(err.message);
   }
