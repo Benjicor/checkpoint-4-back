@@ -7,7 +7,7 @@ class News {
   }
 
   static createOne(news) {
-    const sql = "INSERT INTO news SET title=?";
+    const sql = "INSERT INTO news SET ?";
     return connection.promise().query(sql, [news]);
   }
 
