@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BrandonSev/express-sample.git"
+    "url": "git+https://github.com/Benjicor/back-template.git"
   },
   "keywords": [
     "express",
@@ -37,12 +37,12 @@
     "mysql",
     "project"
   ],
-  "author": "BrandonSev",
+  "author": "Benjicor",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BrandonSev/express-sample/issues"
+    "url": "https://github.com/Benjicor/back-template/issues"
   },
-  "homepage": "https://github.com/BrandonSev/express-sample#readme",
+  "homepage": "https://github.com/Benjicor/back-template#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "db-migrate-mysql": "^2.2.0",
