@@ -15,8 +15,8 @@ const findOneById = async (req, res) => {
 // Méthode qui permet de créer une actualité
 const createOne = async (req, res) => {
   try {
-    const { title, src, link, created_at, description } = req.body;
-    const [result] = await News.createOne({ title, src, link, created_at, description });
+    const { title, src, link, description } = req.body;
+    const [result] = await News.createOne({ title, src, link, description });
     const [[newsCreated]] = await News.findOneById(result.insertId);
     return res.status(201).json({
       message: "Votre actualité a bien été créé",
@@ -30,10 +30,11 @@ const createOne = async (req, res) => {
 // Méthode qui permet de mettre a jour les informations d'une actualité par son ID
 const updateOneById = async (req, res) => {
   try {
-    const { title, src, link, created_at, description } = req.body;
-    await News.updateOneById({ title, src, link, created_at, description });
-    const [[news]] = await News.findOneById(req.params.id);
-    return res.status(200).json({ message: "L'actualité a bien été modifié", news });
+    const { id } = req.params;
+    const newsUpdate = req.body;
+    await News.updateOneById(newsUpdate, id);
+    const [[newsModified]] = await News.findOneById(id);
+    return res.status(200).json({ message: "L'actualité a bien été modifié", newsModified });
   } catch (err) {
     return res.status(500).send(err.message);
   }

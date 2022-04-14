@@ -4,7 +4,7 @@ CREATE TABLE `events` (
     `src` VARCHAR(255) NULL,
     `link` VARCHAR(255) NULL,
     `location` VARCHAR(255) NOT NULL,
-    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP() NOT NULL,
+    `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP() NOT NULL ON UPDATE CURRENT_TIMESTAMP,
     `event_date` DATETIME NOT NULL,
     `description` text NOT NULL
 );

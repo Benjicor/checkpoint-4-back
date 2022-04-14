@@ -15,8 +15,8 @@ const findOneById = async (req, res) => {
 // Méthode qui permet de créer un article
 const createOne = async (req, res) => {
   try {
-    const { title, src, link, created_at, description } = req.body;
-    const [result] = await Articles.createOne({ title, src, link, created_at, description });
+    const { title, src, link, description } = req.body;
+    const [result] = await Articles.createOne({ title, src, link, description });
     const [[articlesCreated]] = await Articles.findOneById(result.insertId);
     return res.status(201).json({
       message: "Votre article a bien été créé",
@@ -30,10 +30,11 @@ const createOne = async (req, res) => {
 // Méthode qui permet de mettre a jour les informations d'un article par son ID
 const updateOneById = async (req, res) => {
   try {
-    const { title, src, link, created_at, description } = req.body;
-    await Articles.updateOneById({ title, src, link, created_at, description });
-    const [[articles]] = await Articles.findOneById(req.params.id);
-    return res.status(200).json({ message: "L'article a bien été modifié", articles });
+    const { id } = req.params;
+    const articlesUpdate = req.body;
+    await Articles.updateOneById(articlesUpdate, id);
+    const [[articlesModified]] = await Articles.findOneById(id);
+    return res.status(200).json({ message: "L'article a bien été modifié", articlesModified });
   } catch (err) {
     return res.status(500).send(err.message);
   }
