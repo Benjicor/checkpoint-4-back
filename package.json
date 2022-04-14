@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BrandonSev/express-sample.git"
+    "url": "git+https://github.com/Benjicor/back-template.git"
   },
   "keywords": [
     "express",
@@ -37,12 +37,12 @@
     "mysql",
     "project"
   ],
-  "author": "BrandonSev",
+  "author": "Benjicor",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/BrandonSev/express-sample/issues"
+    "url": "https://github.com/Benjicor/back-template/issues"
   },
-  "homepage": "https://github.com/BrandonSev/express-sample#readme",
+  "homepage": "https://github.com/Benjicor/back-template#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "db-migrate-mysql": "^2.2.0",
@@ -54,7 +54,10 @@
     "eslint-plugin-jest": "^25.3.4",
     "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.2",
-    "mysql2": "^2.3.3"
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.3",
+    "nodemailer-express-handlebars": "^5.0.0"
   },
   "devDependencies": {
     "db-migrate": "^0.11.13",

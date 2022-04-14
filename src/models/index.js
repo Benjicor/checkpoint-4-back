@@ -1,4 +1,9 @@
-// Exemple content of this file //
+const News = require("./news.model");
+const Articles = require("./articles.model");
+const Events = require("./events.model");
 
-// const exampleModels = require("./Example.models");
-// module.exports = { exampleModels };
+module.exports = {
+  News,
+  Articles,
+  Events,
+};

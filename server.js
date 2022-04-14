@@ -13,11 +13,11 @@ app.use("/api", mainRouter);
 
 app.listen(process.env.PORT || 8000, (err) => {
   if (err) return console.log(err.message);
-  console.log(`La connexion au serveur a réussi: http://localhost:${process.env.PORT || 8000}`);
+  console.log(`La connexion au serveur a réussi sur le port http://localhost:${process.env.PORT || 8000}`);
   // Test connexion to MYSQL DB
   connection.connect((err) => {
     if (err) return console.log(err.message);
-    console.log(`La connexion a la base de donnée a réussi`);
+    console.log(`La connexion MySQL à la base de données ${process.env.DB_NAME} de ${process.env.DB_USER} a réussi`);
   });
 });
 
