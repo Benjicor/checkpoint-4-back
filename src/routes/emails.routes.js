@@ -18,6 +18,10 @@ const transport = nodemailer.createTransport({
   },
 });
 
+emailRouter.get("/", (req, res) => {
+  res.send("Bonjour email routes");
+});
+
 // Envoie de mail avec hbs template et un fichier
 emailRouter.post("/hbs-and-file", async (req, res) => {
   const { email, firstname, lastname, subject, message } = req.body;
@@ -27,7 +31,7 @@ emailRouter.post("/hbs-and-file", async (req, res) => {
     from: email,
     to: EMAIL_USED,
     cc: email,
-    subject: `Bonjour je suis ${firstname} ${lastname} et vous contact depuis votre Blog Voiles et Voiliers`, // Envoie d'email avec une template hbs
+    subject: `Bonjour je suis ${firstname} ${lastname} et vous contact depuis votre Blog La Voile et les Voiliers`, // Envoie d'email avec une template hbs
     attachments: [
       {
         filename: "PenDuickIII.jpeg",
