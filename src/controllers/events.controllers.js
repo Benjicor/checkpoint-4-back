@@ -15,8 +15,8 @@ const findOneById = async (req, res) => {
 // Méthode qui permet de créer un événement
 const createOne = async (req, res) => {
   try {
-    const { title, src, link, location, created_at, event_date, description } = req.body;
-    const [result] = await Events.createOne({ title, src, link, location, created_at, event_date, description });
+    const { title, src, link, location, event_date, description } = req.body;
+    const [result] = await Events.createOne({ title, src, link, location, event_date, description });
     const [[eventsCreated]] = await Events.findOneById(result.insertId);
     return res.status(201).json({
       message: "Votre événement a bien été créé",
@@ -30,10 +30,11 @@ const createOne = async (req, res) => {
 // Méthode qui permet de mettre a jour les informations d'un événement par son ID
 const updateOneById = async (req, res) => {
   try {
-    const { title, src, link, location, created_at, event_date, description } = req.body;
-    await Events.updateOneById({ title, src, link, location, created_at, event_date, description });
-    const [[events]] = await Events.findOneById(req.params.id);
-    return res.status(200).json({ message: "L'événement a bien été modifié", events });
+    const { id } = req.params;
+    const eventsUpdate = req.body;
+    await Events.updateOneById(eventsUpdate, id);
+    const [[eventsModified]] = await Events.findOneById(id);
+    return res.status(200).json({ message: "L'événement a bien été modifié", eventsModified });
   } catch (err) {
     return res.status(500).send(err.message);
   }
