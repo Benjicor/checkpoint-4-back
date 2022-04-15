@@ -4,6 +4,7 @@ const { ArticlesController } = require("../controllers");
 
 // GET
 articlesRouter.get("/", ArticlesController.findOneById);
+articlesRouter.get("/", ArticlesController.findAll);
 
 // POST
 articlesRouter.post("/", ArticlesController.createOne);

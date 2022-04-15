@@ -4,6 +4,7 @@ const { NewsController } = require("../controllers");
 
 // GET
 newsRouter.get("/:id", NewsController.findOneById);
+newsRouter.get("/", NewsController.findAll);
 
 // POST
 newsRouter.post("/", NewsController.createOne);
