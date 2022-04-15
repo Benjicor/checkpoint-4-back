@@ -6,6 +6,11 @@ class News {
     return connection.promise().query(sql, [id]);
   }
 
+  static findAll() {
+    const sql = "SELECT * FROM news";
+    return connection.promise().query(sql);
+  }
+
   static createOne(news) {
     const sql = "INSERT INTO news SET ?";
     return connection.promise().query(sql, [news]);

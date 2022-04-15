@@ -12,6 +12,16 @@ const findOneById = async (req, res) => {
   }
 };
 
+// Méthode qui permet de recuperer tous les articles
+const findAll = async (req, res) => {
+  try {
+    const [results] = await Articles.findAll();
+    return res.json(results);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+};
+
 // Méthode qui permet de créer un article
 const createOne = async (req, res) => {
   try {
@@ -55,6 +65,7 @@ const deleteOneById = async (req, res) => {
 
 module.exports = {
   findOneById,
+  findAll,
   createOne,
   updateOneById,
   deleteOneById,

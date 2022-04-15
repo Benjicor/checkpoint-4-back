@@ -1,9 +1,18 @@
 require("dotenv").config();
-const express = require("express");
 
-const app = express();
+const express = require("express");
+const cors = require("cors");
 const mainRouter = require("./src/routes");
 const { connection } = require("./db-connection");
+
+const app = express();
+
+// On configure cors pour autoriser uniquement le front à communiquer avec notre API
+app.use(
+  cors({
+    origin: [process.env.CLIENT_ORIGIN],
+  }),
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,10 +23,11 @@ app.use("/api", mainRouter);
 app.listen(process.env.PORT || 8000, (err) => {
   if (err) return console.log(err.message);
   console.log(`La connexion au serveur a réussi sur le port http://localhost:${process.env.PORT || 8000}`);
+
   // Test connexion to MYSQL DB
-  connection.connect((err) => {
-    if (err) return console.log(err.message);
-    console.log(`La connexion MySQL à la base de données ${process.env.DB_NAME} de ${process.env.DB_USER} a réussi`);
+  return connection.connect((err2) => {
+    if (err2) return console.log(err2.message);
+    return console.log(`La connexion MySQL à la base de données ${process.env.DB_NAME} de ${process.env.DB_USER} a réussi`);
   });
 });
 
