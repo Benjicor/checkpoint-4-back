@@ -3,7 +3,7 @@ const articlesRouter = require("express").Router();
 const { ArticlesController } = require("../controllers");
 
 // GET
-articlesRouter.get("/", ArticlesController.findOneById);
+articlesRouter.get("/:id", ArticlesController.findOneById);
 articlesRouter.get("/", ArticlesController.findAll);
 
 // POST
