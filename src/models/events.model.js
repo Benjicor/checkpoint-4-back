@@ -7,7 +7,7 @@ class Events {
   }
 
   static findAll() {
-    const sql = "SELECT * FROM news";
+    const sql = "SELECT * FROM events";
     return connection.promise().query(sql);
   }
 
