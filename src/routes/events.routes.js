@@ -4,6 +4,7 @@ const { EventsController } = require("../controllers");
 
 // GET
 eventsRouter.get("/", EventsController.findOneById);
+eventsRouter.get("/", EventsController.findAll);
 
 // POST
 eventsRouter.post("/", EventsController.createOne);

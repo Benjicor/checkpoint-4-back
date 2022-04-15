@@ -12,6 +12,16 @@ const findOneById = async (req, res) => {
   }
 };
 
+// Méthode qui permet de recuperer toutes les actualités
+const findAll = async (req, res) => {
+  try {
+    const [results] = await News.findAll();
+    return res.json(results);
+  } catch (err) {
+    return res.status(500).send(err.message);
+  }
+};
+
 // Méthode qui permet de créer une actualité
 const createOne = async (req, res) => {
   try {
@@ -55,6 +65,7 @@ const deleteOneById = async (req, res) => {
 
 module.exports = {
   findOneById,
+  findAll,
   createOne,
   updateOneById,
   deleteOneById,
